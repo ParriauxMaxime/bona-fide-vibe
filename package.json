@@ -1,0 +1,29 @@
+{
+	"name": "salle-st-pierre",
+	"version": "1.0.0",
+	"private": true,
+	"scripts": {
+		"start": "rspack serve",
+		"build": "rspack build",
+		"lint": "biome check .",
+		"format": "biome format --write .",
+		"typing": "tsc --noEmit"
+	},
+	"dependencies": {
+		"preact": "^10.28.3"
+	},
+	"devDependencies": {
+		"@biomejs/biome": "^1.9.4",
+		"@rspack/cli": "^1.2.0",
+		"@rspack/core": "^1.2.0",
+		"@rspack/plugin-react-refresh": "^1.0.1",
+		"@tailwindcss/postcss": "^4.0.0",
+		"@types/react": "^19.2.10",
+		"@types/react-dom": "^19.2.3",
+		"postcss": "^8.5.0",
+		"postcss-loader": "^8.1.0",
+		"react-refresh": "^0.14.2",
+		"tailwindcss": "^4.0.0",
+		"typescript": "^5.7.0"
+	}
+}

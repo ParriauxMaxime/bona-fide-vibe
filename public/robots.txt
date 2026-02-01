@@ -1,0 +1,6 @@
+# Robots.txt for Salle Saint-Pierre
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://salle-saint-pierre.fr/sitemap.xml
