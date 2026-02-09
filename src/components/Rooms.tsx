@@ -1,5 +1,6 @@
 import { Suspense, lazy, useState } from "react";
 import rooms from "../data/rooms.json";
+import { Comparison } from "./Comparison";
 import { RoomCard, Section, SectionTitle } from "./common";
 
 const Lightbox = lazy(() => import("./common/Lightbox").then((m) => ({ default: m.Lightbox })));
@@ -22,6 +23,7 @@ export function Rooms() {
 					/>
 				))}
 			</div>
+			<Comparison />
 			{lightbox && (
 				<Suspense fallback={null}>
 					<Lightbox

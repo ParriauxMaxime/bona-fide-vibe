@@ -1,7 +1,21 @@
+import { Suspense, lazy, useState } from "react";
 import building from "../data/building.json";
-import { ParallaxSection, SectionTitle } from "./common";
+import { ImageCarousel, ParallaxSection, SectionTitle } from "./common";
+
+const Lightbox = lazy(() => import("./common/Lightbox").then((m) => ({ default: m.Lightbox })));
+
+const outsideImages = [
+	`${__PUBLIC_PATH__}media/outside.webp`,
+	`${__PUBLIC_PATH__}media/outside-2.webp`,
+	`${__PUBLIC_PATH__}media/outside-3.webp`,
+];
 
 export function Context() {
+	const [lightbox, setLightbox] = useState<{
+		images: string[];
+		index: number;
+	} | null>(null);
+
 	return (
 		<ParallaxSection maxW="6xl" variant="warm">
 			<div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
@@ -9,7 +23,7 @@ export function Context() {
 					<SectionTitle>{building.name}</SectionTitle>
 					<p className="text-lg text-stone-600 dark:text-stone-300 mb-6 text-justify">
 						{building.description[0]}
-						<br />
+						<br /> <br />
 						{building.description[1]}
 					</p>
 					<a
@@ -26,18 +40,26 @@ export function Context() {
 				</div>
 
 				<div className="relative flex justify-center lg:justify-end">
-					<div className="aspect-[4/3] w-full max-w-md rounded-2xl overflow-hidden shadow-xl">
-						<img
-							src={`${__PUBLIC_PATH__}media/outside.webp`}
-							alt="Bâtiment des Salles Saint-Pierre à Pontarlier"
-							className="w-full h-full object-cover"
-							decoding="async"
+					<div className="w-full max-w-md rounded-2xl overflow-hidden shadow-xl">
+						<ImageCarousel
+							images={outsideImages}
+							onImageClick={(index) => setLightbox({ images: outsideImages, index })}
+							className="aspect-[4/3]"
 						/>
 					</div>
 					<div className="absolute -bottom-2 -left-2 w-16 h-16 bg-gray-300/30 dark:bg-orange-500/20 rounded-full blur-xl" />
 					<div className="absolute -top-2 -right-2 w-20 h-20 bg-gray-200/40 dark:bg-amber-500/20 rounded-full blur-xl" />
 				</div>
 			</div>
+			{lightbox && (
+				<Suspense fallback={null}>
+					<Lightbox
+						images={lightbox.images}
+						initialIndex={lightbox.index}
+						onClose={() => setLightbox(null)}
+					/>
+				</Suspense>
+			)}
 		</ParallaxSection>
 	);
 }

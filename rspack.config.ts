@@ -5,7 +5,7 @@ import RefreshPlugin from "@rspack/plugin-react-refresh";
 
 const isDev = process.env.NODE_ENV === "development";
 const publicPath = process.env.PUBLIC_PATH || "/";
-const siteUrl = process.env.SITE_URL || "https://salle-saint-pierre.fr";
+const siteUrl = process.env.SITE_URL || "http://groupement-catholique-saint-pierre.fr/";
 
 export default defineConfig({
 	mode: isDev ? "development" : "production",
@@ -63,7 +63,7 @@ export default defineConfig({
 		new rspack.HtmlRspackPlugin({
 			template: "./src/index.html",
 			scriptLoading: "defer",
-			templateParameters: { siteUrl },
+			templateParameters: { siteUrl, publicPath },
 		}),
 		new rspack.CopyRspackPlugin({
 			patterns: [{ from: "public", to: "." }],

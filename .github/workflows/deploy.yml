@@ -39,15 +39,8 @@ jobs:
       - name: Build
         run: yarn build
         env:
-          PUBLIC_PATH: /${{ github.event.repository.name }}/
-          SITE_URL: ${{ vars.SITE_URL || format('https://{0}.github.io/{1}', github.repository_owner, github.event.repository.name) }}
-
-      - name: Update static files with correct URL
-        run: |
-          sed -i "s|https://salle-saint-pierre.fr|$SITE_URL|g" dist/sitemap.xml
-          sed -i "s|https://salle-saint-pierre.fr|$SITE_URL|g" dist/robots.txt
-        env:
-          SITE_URL: ${{ vars.SITE_URL || format('https://{0}.github.io/{1}', github.repository_owner, github.event.repository.name) }}
+          PUBLIC_PATH: /
+          SITE_URL: https://groupement-catholique-saint-pierre.fr
 
       - name: Setup Pages
         uses: actions/configure-pages@v4

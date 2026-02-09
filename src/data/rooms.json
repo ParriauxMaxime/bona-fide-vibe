@@ -2,43 +2,42 @@
 	{
 		"id": "small",
 		"name": "Petite salle",
-		"capacity": 20,
-		"surface": 25,
+		"capacity": 25,
+		"surface": 41,
 		"price": 80,
-		"description": "Idéale pour les réunions, petites fêtes de famille ou ateliers. Équipée d'une kitchenette.",
+		"description": "Idéale pour les réunions, petites fêtes de famille ou ateliers. Équipée d'une kitchenette incluant la vaisselle",
 		"amenities": ["Kitchenette", "Tableau blanc"],
-		"images": [
-			"https://images.unsplash.com/photo-1497366216548-37526070297c?w=800&h=600&fit=crop",
-			"https://images.unsplash.com/photo-1497366811353-6870744d04b2?w=800&h=600&fit=crop",
-			"https://images.unsplash.com/photo-1524758631624-e2822e304c36?w=800&h=600&fit=crop"
-		]
+		"images": ["/media/small/1.webp", "/media/small/2.webp", "/media/small/3.webp"]
 	},
 	{
 		"id": "medium",
 		"name": "Moyenne salle",
 		"capacity": 100,
-		"surface": 60,
-		"price": 150,
-		"description": "Parfaite pour les anniversaires, repas de groupe ou séminaires. Accès à une cuisine équipée.",
+		"surface": 107,
+		"price": 190,
+		"description": "Parfaite pour les anniversaires, les baptêmes, les repas de groupe, les séminaires, les réceptions funéraires…. Accès à une cuisine équipée incluant la vaiselle.",
 		"amenities": ["Cuisine équipée", "Tables et chaises"],
 		"images": [
-			"https://images.unsplash.com/photo-1517457373958-b7bdd4587205?w=800&h=600&fit=crop",
-			"https://images.unsplash.com/photo-1519167758481-83f550bb49b3?w=800&h=600&fit=crop",
-			"https://images.unsplash.com/photo-1464366400600-7168b8af9bc3?w=800&h=600&fit=crop"
+			"/media/medium/1.webp",
+			"/media/medium/2.webp",
+			"/media/medium/3.webp",
+			"/media/medium/4.webp"
 		]
 	},
 	{
 		"id": "large",
 		"name": "Grande salle",
 		"capacity": 150,
-		"surface": 150,
-		"price": 300,
-		"description": "Notre plus grande salle pour vos mariages, banquets et événements d'envergure",
+		"surface": 215,
+		"price": 210,
+		"description": "Notre plus grande salle pour vos mariages, baptêmes, banquets et événements d'envergure.",
 		"amenities": ["Cuisine professionnelle", "Tables et chaises", "Vestiaire"],
 		"images": [
-			"https://images.unsplash.com/photo-1519225421980-715cb0215aed?w=800&h=600&fit=crop",
-			"https://images.unsplash.com/photo-1478146896981-b80fe463b330?w=800&h=600&fit=crop",
-			"https://images.unsplash.com/photo-1511795409834-ef04bbd61622?w=800&h=600&fit=crop"
+			"/media/large/1.webp",
+			"/media/large/2.webp",
+			"/media/large/3.webp",
+			"/media/large/4.webp",
+			"/media/large/5.webp"
 		]
 	}
 ]

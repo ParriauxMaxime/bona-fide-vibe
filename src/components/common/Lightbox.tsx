@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { ChevronLeft } from "./ChevronLeft";
 import { ChevronRight } from "./ChevronRight";
 
@@ -12,6 +12,29 @@ export function Lightbox({
 	onClose: () => void;
 }) {
 	const [index, setIndex] = useState(initialIndex);
+	const [deltaX, setDeltaX] = useState(0);
+	const startX = useRef(0);
+	const swiped = useRef(false);
+
+	const onTouchStart = (e: React.TouchEvent) => {
+		startX.current = e.touches[0].clientX;
+		swiped.current = false;
+	};
+
+	const onTouchMove = (e: React.TouchEvent) => {
+		setDeltaX(e.touches[0].clientX - startX.current);
+	};
+
+	const onTouchEnd = () => {
+		if (deltaX < -50) {
+			setIndex((i) => (i + 1) % images.length);
+			swiped.current = true;
+		} else if (deltaX > 50) {
+			setIndex((i) => (i - 1 + images.length) % images.length);
+			swiped.current = true;
+		}
+		setDeltaX(0);
+	};
 
 	useEffect(() => {
 		const handleKeyDown = (e: KeyboardEvent) => {
@@ -34,9 +57,42 @@ export function Lightbox({
 			onKeyDown={(e) => e.key === "Escape" && onClose()}
 			role="presentation"
 		>
+			<div
+				className="relative overflow-hidden w-[90vw] h-[90vh]"
+				onClick={(e) => {
+					if (!swiped.current) e.stopPropagation();
+				}}
+				onKeyDown={(e) => e.stopPropagation()}
+				role="presentation"
+			>
+				<div
+					className={`flex h-full ${deltaX === 0 ? "transition-transform duration-300 ease-in-out" : ""}`}
+					style={{ transform: `translateX(calc(-${index * 100}% + ${deltaX}px))` }}
+					onTouchStart={onTouchStart}
+					onTouchMove={onTouchMove}
+					onTouchEnd={onTouchEnd}
+				>
+					{images.map((src) => (
+						<div
+							key={src}
+							className="w-[90vw] h-full flex-shrink-0 flex items-center justify-center"
+						>
+							<img
+								src={src}
+								alt=""
+								className="max-h-full max-w-full object-contain cursor-default"
+								decoding="async"
+							/>
+						</div>
+					))}
+				</div>
+			</div>
 			<button
 				type="button"
-				onClick={onClose}
+				onClick={(e) => {
+					e.stopPropagation();
+					onClose();
+				}}
 				className="absolute top-4 right-4 text-white/80 hover:text-white p-2 cursor-pointer"
 				aria-label="Fermer"
 			>
@@ -62,43 +118,18 @@ export function Lightbox({
 					e.stopPropagation();
 					setIndex((i) => (i - 1 + images.length) % images.length);
 				}}
-				className="absolute left-4 text-white/80 hover:text-white p-2 cursor-pointer"
+				className="absolute left-4 top-1/2 -translate-y-1/2 text-white/80 hover:text-white p-2 cursor-pointer"
 				aria-label="Image précédente"
 			>
 				<ChevronLeft className="h-10 w-10" />
 			</button>
-			<div
-				className="relative overflow-hidden w-[90vw] h-[90vh]"
-				onClick={(e) => e.stopPropagation()}
-				onKeyDown={(e) => e.stopPropagation()}
-				role="presentation"
-			>
-				<div
-					className="flex h-full transition-transform duration-300 ease-in-out"
-					style={{ transform: `translateX(-${index * 100}%)` }}
-				>
-					{images.map((src) => (
-						<div
-							key={src}
-							className="w-[90vw] h-full flex-shrink-0 flex items-center justify-center"
-						>
-							<img
-								src={src}
-								alt=""
-								className="max-h-full max-w-full object-contain cursor-default"
-								decoding="async"
-							/>
-						</div>
-					))}
-				</div>
-			</div>
 			<button
 				type="button"
 				onClick={(e) => {
 					e.stopPropagation();
 					setIndex((i) => (i + 1) % images.length);
 				}}
-				className="absolute right-4 text-white/80 hover:text-white p-2 cursor-pointer"
+				className="absolute right-4 top-1/2 -translate-y-1/2 text-white/80 hover:text-white p-2 cursor-pointer"
 				aria-label="Image suivante"
 			>
 				<ChevronRight className="h-10 w-10" />

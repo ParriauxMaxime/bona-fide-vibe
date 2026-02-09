@@ -11,7 +11,7 @@ export function Header({
 		<header className="bg-white dark:bg-stone-900 border-b border-stone-200 dark:border-stone-700">
 			<div className="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between gap-4">
 				<h1 className="text-lg font-semibold text-stone-800 dark:text-white">
-					<span className="sm:hidden">{owner.associationName.replace("Association des", "")}</span>
+					<span className="sm:hidden">{owner.associationName}</span>
 					<span className="hidden sm:inline">{owner.associationName}</span>
 				</h1>
 				<div className="flex items-center gap-3">

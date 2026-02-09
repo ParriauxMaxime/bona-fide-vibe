@@ -1,0 +1,27 @@
+{
+	"effectiveDate": "01/01/2026",
+	"rows": [
+		{
+			"duration": "1/2 journée ou réception funéraire",
+			"large": 210,
+			"medium": 190,
+			"small": 80,
+			"observations": "Hors week-end"
+		},
+		{
+			"duration": "1 jour",
+			"large": 300,
+			"medium": 250,
+			"small": 150,
+			"observations": "De 9 h le matin au lendemain 9 h"
+		},
+		{
+			"duration": "2 jours ou week-end",
+			"large": 400,
+			"medium": 330,
+			"small": 200,
+			"observations": "Du vendredi 9 h au lundi 9 h. Pour les mariages : du vendredi 9 h au lundi 14 h"
+		}
+	],
+	"footnote": "Pour les festivités du Nouvel An, les tarifs seront doublés"
+}

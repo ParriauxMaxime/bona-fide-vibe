@@ -1,27 +1,57 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { ChevronLeft } from "./ChevronLeft";
 import { ChevronRight } from "./ChevronRight";
 
 export function ImageCarousel({
 	images,
 	onImageClick,
+	className = "h-48",
 }: {
 	images: string[];
 	onImageClick: (index: number) => void;
+	className?: string;
 }) {
 	const [index, setIndex] = useState(0);
+	const [deltaX, setDeltaX] = useState(0);
+	const startX = useRef(0);
+	const swiped = useRef(false);
+
+	const onTouchStart = (e: React.TouchEvent) => {
+		startX.current = e.touches[0].clientX;
+		swiped.current = false;
+	};
+
+	const onTouchMove = (e: React.TouchEvent) => {
+		setDeltaX(e.touches[0].clientX - startX.current);
+	};
+
+	const onTouchEnd = () => {
+		if (deltaX < -50) {
+			setIndex((i) => (i + 1) % images.length);
+			swiped.current = true;
+		} else if (deltaX > 50) {
+			setIndex((i) => (i - 1 + images.length) % images.length);
+			swiped.current = true;
+		}
+		setDeltaX(0);
+	};
 
 	return (
-		<div className="relative h-48 bg-stone-100 dark:bg-stone-700 group overflow-hidden">
+		<div className={`relative bg-stone-100 dark:bg-stone-700 group overflow-hidden ${className}`}>
 			<div
-				className="flex h-full transition-transform duration-300 ease-in-out"
-				style={{ transform: `translateX(-${index * 100}%)` }}
+				className={`flex h-full ${deltaX === 0 ? "transition-transform duration-300 ease-in-out" : ""}`}
+				style={{ transform: `translateX(calc(-${index * 100}% + ${deltaX}px))` }}
+				onTouchStart={onTouchStart}
+				onTouchMove={onTouchMove}
+				onTouchEnd={onTouchEnd}
 			>
 				{images.map((src, i) => (
 					<button
 						type="button"
 						key={src}
-						onClick={() => onImageClick(index)}
+						onClick={() => {
+							if (!swiped.current) onImageClick(index);
+						}}
 						className="w-full h-full flex-shrink-0 cursor-pointer p-0 border-0 bg-transparent"
 						aria-label={`Voir l'image ${i + 1} en plein écran`}
 					>

@@ -75,12 +75,12 @@ export function Contact() {
 						{owner.fullName}
 					</p>
 
-					<div className="space-y-4">
+					<div className="space-y-2">
 						<a
 							href={`tel:${owner.phone.replace(/\s/g, "")}`}
 							className="flex items-center gap-4 p-3 rounded-lg hover:bg-stone-100 dark:hover:bg-stone-700 transition-colors group"
 						>
-							<div className="w-10 h-10 bg-orange-100 dark:bg-orange-900/30 rounded-full flex items-center justify-center">
+							<div className="min-w-10 min-h-10 bg-orange-100 dark:bg-orange-900/30 rounded-full flex items-center justify-center">
 								<Phone className="w-5 h-5 text-orange-600 dark:text-orange-400" />
 							</div>
 							<span className="text-stone-700 dark:text-stone-200 group-hover:text-orange-600 dark:group-hover:text-orange-400 transition-colors">
@@ -92,10 +92,10 @@ export function Contact() {
 							href={`mailto:${owner.email}`}
 							className="flex items-center gap-4 p-3 rounded-lg hover:bg-stone-100 dark:hover:bg-stone-700 transition-colors group"
 						>
-							<div className="w-10 h-10 bg-orange-100 dark:bg-orange-900/30 rounded-full flex items-center justify-center">
+							<div className="min-w-10 min-h-10 bg-orange-100 dark:bg-orange-900/30 rounded-full flex items-center justify-center">
 								<Mail className="w-5 h-5 text-orange-600 dark:text-orange-400" />
 							</div>
-							<span className="text-stone-700 dark:text-stone-200 group-hover:text-orange-600 dark:group-hover:text-orange-400 transition-colors">
+							<span className="text-stone-700 dark:text-stone-200 group-hover:text-orange-600 dark:group-hover:text-orange-400 transition-colors truncate">
 								{owner.email}
 							</span>
 						</a>
@@ -106,7 +106,7 @@ export function Contact() {
 							rel="noopener noreferrer"
 							className="flex items-center gap-4 p-3 rounded-lg hover:bg-stone-100 dark:hover:bg-stone-700 transition-colors group"
 						>
-							<div className="w-10 h-10 bg-orange-100 dark:bg-orange-900/30 rounded-full flex items-center justify-center">
+							<div className="min-w-10 min-h-10 bg-orange-100 dark:bg-orange-900/30 rounded-full flex items-center justify-center">
 								<MapPin className="w-5 h-5 text-orange-600 dark:text-orange-400" />
 							</div>
 							<span className="text-stone-700 dark:text-stone-200 group-hover:text-orange-600 dark:group-hover:text-orange-400 transition-colors">

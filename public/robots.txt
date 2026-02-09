@@ -3,4 +3,4 @@ User-agent: *
 Allow: /
 
 # Sitemap
-Sitemap: https://salle-saint-pierre.fr/sitemap.xml
+Sitemap: https://groupement-catholique-saint-pierre.fr/sitemap.xml
