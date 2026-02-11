@@ -31,7 +31,7 @@
     <link rel="preconnect" href="https://maps.googleapis.com" />
 
     <!-- Favicon & Manifest -->
-    <link rel="icon" href="<%= publicPath %>favicon.ico" sizes="32x32" />
+    <link rel="icon" href="<%= publicPath %>favicon.ico" sizes="48x48 96x96" />
     <link rel="icon" type="image/svg+xml" href="<%= publicPath %>favicon.svg" />
     <link rel="apple-touch-icon" sizes="180x180" href="<%= publicPath %>apple-touch-icon.png" />
     <link rel="manifest" href="<%= publicPath %>manifest.json" />
@@ -89,6 +89,17 @@
         {"@type": "LocationFeatureSpecification", "name": "Parking"}
       ],
       "maximumAttendeeCapacity": 150
+    }
+    </script>
+
+    <!-- Structured Data - WebSite (controls site name in Google results) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "Salles Saint-Pierre",
+      "alternateName": "Salle Saint-Pierre Pontarlier",
+      "url": "<%= siteUrl %>"
     }
     </script>
 

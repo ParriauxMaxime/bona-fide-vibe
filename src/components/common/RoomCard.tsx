@@ -9,7 +9,10 @@ export function RoomCard({
 	onOpenLightbox: (images: string[], index: number) => void;
 }) {
 	return (
-		<article className="flex flex-col bg-white dark:bg-stone-800 border border-stone-200 dark:border-stone-700 rounded-lg overflow-hidden hover:shadow-lg transition-shadow">
+		<article
+			data-nosnippet
+			className="flex flex-col bg-white dark:bg-stone-800 border border-stone-200 dark:border-stone-700 rounded-lg overflow-hidden hover:shadow-lg transition-shadow"
+		>
 			<ImageCarousel
 				images={room.images.map((src) => `${__PUBLIC_PATH__}${src.slice(1)}`)}
 				onImageClick={(index) =>
@@ -24,13 +27,12 @@ export function RoomCard({
 					<h3 className="text-xl font-semibold text-stone-800 dark:text-white">{room.name}</h3>
 				</div>
 				<p className="text-stone-600 dark:text-stone-300 mb-4 text-left">{room.description}</p>
-				<div className="flex flex-wrap gap-4 text-sm text-stone-500 dark:text-stone-400 mb-4">
-					<span>{room.capacity} personnes</span>
-					<span>{room.surface} m²</span>
+				<p className="text-sm text-stone-500 dark:text-stone-400 mb-4">
+					{room.capacity} personnes · {room.surface} m² ·{" "}
 					<span className="font-semibold text-stone-800 dark:text-white">
-						A partir de {room.price}€
+						À partir de {room.price}€
 					</span>
-				</div>
+				</p>
 				<div className="flex flex-wrap gap-2">
 					{room.amenities.map((amenity) => (
 						<span
