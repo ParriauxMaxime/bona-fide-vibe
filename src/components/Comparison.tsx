@@ -43,7 +43,9 @@ export function Comparison() {
 								<td className="px-4 py-3 text-right tabular-nums">{formatPrice(row.large)}</td>
 								<td className="px-4 py-3 text-right tabular-nums">{formatPrice(row.medium)}</td>
 								<td className="px-4 py-3 text-right tabular-nums">{formatPrice(row.small)}</td>
-								<td className="px-4 py-3 text-stone-600 dark:text-stone-400 whitespace-pre-line">{row.observations}</td>
+								<td className="px-4 py-3 text-stone-600 dark:text-stone-400 whitespace-pre-line">
+									{row.observations}
+								</td>
 							</tr>
 						))}
 					</tbody>
