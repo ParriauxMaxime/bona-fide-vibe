@@ -6,7 +6,7 @@
 		"surface": 41,
 		"price": 80,
 		"description": "Idéale pour les réunions, petites fêtes de famille ou ateliers. Équipée d'une kitchenette incluant la vaisselle",
-		"amenities": ["Kitchenette", "Tableau blanc"],
+		"amenities": [],
 		"images": ["/media/small/1.webp", "/media/small/2.webp", "/media/small/3.webp"]
 	},
 	{
@@ -16,7 +16,7 @@
 		"surface": 107,
 		"price": 190,
 		"description": "Parfaite pour les anniversaires, les baptêmes, les repas de groupe, les séminaires, les réceptions funéraires. Accès à une cuisine équipée incluant la vaiselle.",
-		"amenities": ["Cuisine équipée", "Tables et chaises"],
+		"amenities": [],
 		"images": [
 			"/media/medium/1.webp",
 			"/media/medium/2.webp",
@@ -31,7 +31,7 @@
 		"surface": 215,
 		"price": 210,
 		"description": "Notre plus grande salle pour vos mariages, baptêmes, banquets et événements d'envergure.",
-		"amenities": ["Cuisine professionnelle", "Tables et chaises", "Vestiaire"],
+		"amenities": [],
 		"images": [
 			"/media/large/1.webp",
 			"/media/large/2.webp",

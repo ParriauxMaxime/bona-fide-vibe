@@ -5,12 +5,7 @@ import { Header } from "./components/Header";
 import { Rooms } from "./components/Rooms";
 
 export function App() {
-	const [darkMode, setDarkMode] = useState(() => {
-		if (typeof window !== "undefined") {
-			return window.matchMedia("(prefers-color-scheme: dark)").matches;
-		}
-		return false;
-	});
+	const [darkMode, setDarkMode] = useState(true);
 
 	useEffect(() => {
 		if (darkMode) {
