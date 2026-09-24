@@ -22,6 +22,9 @@
 			"/media/medium/2.webp",
 			"/media/medium/3.webp",
 			"/media/medium/4.webp"
+		],
+		"extraContracts": [
+			{ "file": "funeral-contract.pdf", "label": "Contrat de location pour réception funéraire" }
 		]
 	},
 	{
